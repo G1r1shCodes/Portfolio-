@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girish's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            pixel: ['"Silkscreen"', 'monospace'],
+            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sun: '#FFD600',
+            hot: '#FF6B9D',
+            ice: '#00D4FF',
+            mint: '#34D399',
+            void: '#000000',
+            paper: '#FFFFFF',
+            cream: '#FFF8E7',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FFF8E7; color: #000; font-family: 'Space Grotesk', system-ui, sans-serif; margin: 0; overflow-x: hidden; }
+    ::selection { background: #FFD600; color: #000; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFF8E7; }
+    ::-webkit-scrollbar-thumb { background: #000; border: 2px solid #FFF8E7; }
+
+    .brutal-border { border: 3px solid #000; }
+    .brutal-shadow { box-shadow: 5px 5px 0px #000; }
+    .brutal-shadow-sm { box-shadow: 3px 3px 0px #000; }
+    .brutal-shadow-lg { box-shadow: 8px 8px 0px #000; }
+
+    .brutal-btn {
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0px #000;
+      transition: all 0.1s ease;
+      font-family: 'Silkscreen', monospace;
+      cursor: pointer;
+    }
+    .brutal-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #000;
+    }
+    .brutal-btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px #000;
+    }
+
+    .card {
+      background: #fff;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0px #000;
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px #000;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border: 2px solid #000;
+      font-size: 10px; font-weight: 800;
+      font-family: 'Space Grotesk', monospace;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      box-shadow: 2px 2px 0px #000;
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    .nav-item { position: relative; padding: 6px 12px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.5px; transition: all 0.15s; border: 2px solid transparent; }
+    .nav-item:hover { background: #FFD600; border: 2px solid #000; }
+    .nav-item.active { background: #FFD600; border: 2px solid #000; box-shadow: 3px 3px 0px #000; }
+
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+
+    .hero-bg {
+      background-image: url('https://z-cdn-media.chatglm.cn/files/4783ce51-f6f0-4d38-9b9d-207b37a0b784.jpg?auth_key=1882510989-ef21893206964a30879326ed80cc56fd-0-e94b4c0a3169c9cd79e909eabec1f8f8');
+      background-size: cover;
+      background-position: center bottom;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-void border-b-4 border-void">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-12">
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="font-pixel text-sun text-sm tracking-wider">GIRISH.EXE</a>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#hero" class="nav-item active text-void">HOME</a>
+          <a href="#about" class="nav-item text-white hover:text-void">ABOUT</a>
+          <a href="#skills" class="nav-item text-white hover:text-void">SKILLS</a>
+          <a href="#quests" class="nav-item text-white hover:text-void">QUESTS</a>
+          <a href="#journey" class="nav-item text-white hover:text-void">JOURNEY</a>
+          <a href="#guestbook" class="nav-item text-white hover:text-void">GUESTBOOK</a>
+          <a href="#contact" class="nav-item text-white hover:text-void">CONTACT</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-white hover:text-sun transition-colors"><span class="iconify" data-icon="lucide:refresh-cw" data-width="16"></span></button>
+        <button class="text-white hover:text-sun transition-colors"><span class="iconify" data-icon="lucide:volume-2" data-width="16"></span></button>
+        <button id="menuBtn" class="md:hidden text-sun ml-2" aria-label="Menu"><span class="iconify" data-icon="lucide:menu" data-width="20"></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-64 z-[60] bg-void border-l-4 border-void p-6">
+    <button id="closeMenu" class="text-sun mb-8"><span class="iconify" data-icon="lucide:x" data-width="24"></span></button>
+    <div class="flex flex-col gap-3">
+      <a href="#hero" class="mob-link font-pixel text-sun text-xs py-2 border-b border-gray-800">HOME</a>
+      <a href="#about" class="mob-link font-pixel text-white text-xs py-2 border-b border-gray-800 hover:text-sun">ABOUT</a>
+      <a href="#skills" class="mob-link font-pixel text-white text-xs py-2 border-b border-gray-800 hover:text-sun">SKILLS</a>
+      <a href="#quests" class="mob-link font-pixel text-white text-xs py-2 border-b border-gray-800 hover:text-sun">QUESTS</a>
+      <a href="#journey" class="mob-link font-pixel text-white text-xs py-2 border-b border-gray-800 hover:text-sun">JOURNEY</a>
+      <a href="#guestbook" class="mob-link font-pixel text-white text-xs py-2 border-b border-gray-800 hover:text-sun">GUESTBOOK</a>
+      <a href="#contact" class="mob-link font-pixel text-white text-xs py-2 border-b border-gray-800 hover:text-sun">CONTACT</a>
+    </div>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero-bg min-h-screen flex items-center justify-center relative">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 text-center px-4 max-w-3xl">
+      <h1 class="font-pixel text-4xl sm:text-5xl md:text-6xl text-white mb-4" style="text-shadow: 4px 4px 0 #000;">GIRISH'S<br>PORTFOLIO</h1>
+      <p class="font-sans text-lg sm:text-xl text-white font-semibold mb-8 leading-relaxed" style="text-shadow: 2px 2px 0 #000;">
+        Explore my world. Discover my work.<br>Meet the builder behind it.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#about" class="brutal-btn bg-sun text-void px-8 py-4 text-xs rounded-none inline-flex items-center gap-2 justify-center">
+          ▶ BEGIN ADVENTURE
+        </a>
+        <a href="#contact" class="brutal-btn bg-white text-void px-8 py-4 text-xs rounded-none inline-flex items-center gap-2 justify-center">
+          <span class="iconify" data-icon="lucide:download" data-width="14"></span> RESUME
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="py-20 px-4 sm:px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-pixel text-2xl sm:text-3xl text-void inline-block bg-sun px-6 py-2 brutal-border brutal-shadow-sm">CHARACTER PROFILE</h2>
+      </div>
+
+      <div class="reveal flex flex-col lg:flex-row gap-8">
+        <!-- Left: Info -->
+        <div class="flex-1 card p-6 sm:p-8 rounded-none">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex-shrink-0">
+              <img src="https://z-cdn-media.chatglm.cn/files/06394323-3d6b-40e3-ac60-e8fcc1e698dd.jpg?auth_key=1882511861-cd456e3774c745ed851339001f81e692-0-d02259c0bcebb682bdd1d3731fb9d5e1" alt="Girish Kumar Yadav" class="w-20 h-20 object-cover" style="border: 3px solid #000000; box-shadow: 4px 4px 0px #000000; border-radius: 0px;" />
+            </div>
+            <div>
+              <h3 class="text-2xl font-extrabold text-void">Girish Kumar Yadav</h3>
+              <p class="font-pixel text-xs text-ice" style="color:#0097b2;">CS Student · AI & ML</p>
+            </div>
+          </div>
+          
+          <p class="text-void leading-relaxed mb-6 font-medium">
+            I specialize in <span class="bg-sun px-1 font-bold">Artificial Intelligence</span> and <span class="bg-ice px-1 font-bold">Machine Learning</span>, developing intelligent systems — from LLM applications and RAG pipelines to computer vision for wildlife conservation. I turn ideas into practical solutions.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="badge bg-ice text-void">Python</span>
+            <span class="badge bg-hot text-white">PyTorch</span>
+            <span class="badge bg-mint text-void">FastAPI</span>
+            <span class="badge bg-sun text-void">LLMs</span>
+            <span class="badge bg-ice text-void">C++</span>
+            <span class="badge bg-hot text-white">RAG</span>
+            <span class="badge bg-mint text-void">NLP</span>
+          </div>
+
+          <p class="font-pixel text-[10px] text-gray-500 mb-3">// currently_training:</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge bg-white text-void">RAG Workflows</span>
+            <span class="badge bg-white text-void">LangChain</span>
+            <span class="badge bg-white text-void">AI Agents</span>
+            <span class="badge bg-white text-void">AWS</span>
+            <span class="badge bg-white text-void">Docker</span>
+          </div>
+        </div>
+
+        <!-- Right: Yellow Stats Card -->
+        <div class="w-full lg:w-80 flex-shrink-0 bg-sun brutal-border brutal-shadow-lg p-6 rounded-none flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="iconify" data-icon="lucide:graduation-cap" data-width="22"></span>
+              <h3 class="font-pixel text-xs">UNIVERSITY</h3>
+            </div>
+            <p class="font-extrabold text-xl">IILM University</p>
+            <p class="text-sm font-semibold opacity-70">Greater Noida, India</p>
+            
+            <div class="mt-6 space-y-0">
+              <div class="flex justify-between items-center py-3 border-b-3 border-void" style="border-bottom:3px solid #000;">
+                <span class="font-pixel text-[10px] font-bold">DURATION</span>
+                <span class="font-mono text-sm font-extrabold">2023 - 2027</span>
+              </div>
+              <div class="flex justify-between items-center py-3 border-b-3 border-void" style="border-bottom:3px solid #000;">
+                <span class="font-pixel text-[10px] font-bold">CGPA</span>
+                <span class="font-pixel text-2xl">9.2/10</span>
+              </div>
+              <div class="flex justify-between items-center py-3">
+                <span class="font-pixel text-[10px] font-bold">MAJOR</span>
+                <span class="font-pixel text-[10px] font-bold text-right leading-tight">AI & MACHINE<br>LEARNING</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3" style="border-top:3px solid #000;">
+            <p class="font-mono text-[10px] font-bold opacity-50">B.TECH CSE — AI & ML</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS (8 BLOCKS) ========== -->
+  <section id="skills" class="py-20 px-4 sm:px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-pixel text-2xl sm:text-3xl text-void inline-block bg-ice px-6 py-2 brutal-border brutal-shadow-sm" style="color:#000;">SKILL TREE</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Languages -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #00D4FF;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:swords" data-width="18"></span> LANGUAGES</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-void" style="background:#00D4FF;">Python</span>
+            <span class="badge text-void" style="background:#00D4FF;">C</span>
+            <span class="badge text-void" style="background:#00D4FF;">C++</span>
+            <span class="badge text-void" style="background:#00D4FF;">Java</span>
+            <span class="badge text-void" style="background:#00D4FF;">JavaScript</span>
+            <span class="badge text-void" style="background:#00D4FF;">HTML</span>
+            <span class="badge text-void" style="background:#00D4FF;">CSS</span>
+          </div>
+        </div>
+
+        <!-- ML & Data Science -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #FF6B9D;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:brain" data-width="18"></span> ML & DATA</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-white" style="background:#FF6B9D;">NumPy</span>
+            <span class="badge text-white" style="background:#FF6B9D;">Pandas</span>
+            <span class="badge text-white" style="background:#FF6B9D;">Scikit-learn</span>
+            <span class="badge text-white" style="background:#FF6B9D;">Matplotlib</span>
+            <span class="badge text-white" style="background:#FF6B9D;">EDA</span>
+            <span class="badge text-white" style="background:#FF6B9D;">Feature Eng.</span>
+          </div>
+        </div>
+
+        <!-- Deep Learning & CV -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #FFD600;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:eye" data-width="18"></span> DL & CV</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-void" style="background:#FFD600;">PyTorch</span>
+            <span class="badge text-void" style="background:#FFD600;">TensorFlow</span>
+            <span class="badge text-void" style="background:#FFD600;">YOLOv7</span>
+            <span class="badge text-void" style="background:#FFD600;">YOLOv8</span>
+            <span class="badge text-void" style="background:#FFD600;">ConvNeXt</span>
+            <span class="badge text-void" style="background:#FFD600;">Computer Vision</span>
+          </div>
+        </div>
+
+        <!-- AI & LLMs -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #34D399;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:sparkles" data-width="18"></span> AI & LLMS</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-void" style="background:#34D399;">RAG</span>
+            <span class="badge text-void" style="background:#34D399;">LangChain</span>
+            <span class="badge text-void" style="background:#34D399;">LlamaIndex</span>
+            <span class="badge text-void" style="background:#34D399;">Vector DB</span>
+            <span class="badge text-void" style="background:#34D399;">AI Agents</span>
+            <span class="badge text-void" style="background:#34D399;">Prompt Eng.</span>
+          </div>
+        </div>
+
+        <!-- Backend & APIs -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #FF9900;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:server" data-width="18"></span> BACKEND</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-void" style="background:#FF9900;">FastAPI</span>
+            <span class="badge text-void" style="background:#FF9900;">REST APIs</span>
+            <span class="badge text-void" style="background:#FF9900;">Pydantic</span>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #A855F7;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:database" data-width="18"></span> DATABASES</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-white" style="background:#A855F7;">MySQL</span>
+          </div>
+        </div>
+
+        <!-- Tools & Platforms -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #FF3333;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:wrench" data-width="18"></span> TOOLS</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-white" style="background:#FF3333;">Git</span>
+            <span class="badge text-white" style="background:#FF3333;">GitHub</span>
+            <span class="badge text-white" style="background:#FF3333;">VS Code</span>
+            <span class="badge text-white" style="background:#FF3333;">Streamlit</span>
+            <span class="badge text-white" style="background:#FF3333;">Figma</span>
+            <span class="badge text-white" style="background:#FF3333;">Linux</span>
+            <span class="badge text-white" style="background:#FF3333;">Docker</span>
+            <span class="badge text-white" style="background:#FF3333;">AWS</span>
+          </div>
+        </div>
+
+        <!-- Core CS -->
+        <div class="reveal card p-6 rounded-none" style="border-left:8px solid #22C55E;">
+          <h3 class="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span class="iconify" data-icon="lucide:cpu" data-width="18"></span> CORE CS</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge text-void" style="background:#22C55E;">DSA</span>
+            <span class="badge text-void" style="background:#22C55E;">OOP</span>
+            <span class="badge text-void" style="background:#22C55E;">Problem Solving</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUEST LOG ========== -->
+  <section id="quests" class="py-20 px-4 sm:px-6 bg-cream">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-pixel text-2xl sm:text-3xl text-white inline-block bg-hot px-6 py-2 brutal-border brutal-shadow-sm">QUEST LOG</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- LexScan -->
+        <div class="reveal card overflow-hidden rounded-none">
+          <div class="h-44 bg-sun flex items-center justify-center relative brutal-border border-l-0 border-r-0 border-t-0">
+            <span class="iconify text-7xl text-void opacity-20" data-icon="lucide:file-search"></span>
+          </div>
+          <div class="p-6">
+            <span class="badge bg-sun text-void mb-3">★ LEGENDARY</span>
+            <h3 class="font-pixel text-xl text-void mb-1">LexScan</h3>
+            <p class="font-pixel text-[10px] text-gray-500 mb-4">AI CONTRACT RISK ANALYZER</p>
+            <ul class="space-y-2 text-sm font-medium">
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> AI contract analysis with LLaMA 3.3 via Groq API</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Prompt-based workflows & retrieval pipelines</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Multi-format OCR (PDF, DOCX, Images)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PathShala AI -->
+        <div class="reveal card overflow-hidden rounded-none">
+          <div class="h-44 bg-mint flex items-center justify-center relative brutal-border border-l-0 border-r-0 border-t-0">
+            <span class="iconify text-7xl text-void opacity-20" data-icon="lucide:book-open"></span>
+          </div>
+          <div class="p-6">
+            <span class="badge bg-mint text-void mb-3">★ EPIC</span>
+            <h3 class="font-pixel text-xl text-void mb-1">PathShala AI</h3>
+            <p class="font-pixel text-[10px] text-gray-500 mb-4">AI CO-TEACHER FOR RURAL INDIA</p>
+            <ul class="space-y-2 text-sm font-medium">
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Structured multi-grade lesson plans in <15s</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Single-teacher classroom support (5 grades)</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Voice-based interaction & WhatsApp delivery</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Elephant Re-ID -->
+        <div class="reveal card overflow-hidden rounded-none">
+          <div class="h-44 bg-ice flex items-center justify-center relative brutal-border border-l-0 border-r-0 border-t-0" style="background:#00D4FF;">
+            <span class="iconify text-7xl text-void opacity-20" data-icon="lucide:binoculars"></span>
+          </div>
+          <div class="p-6">
+            <span class="badge text-void mb-3" style="background:#00D4FF;">★ EPIC</span>
+            <h3 class="font-pixel text-xl text-void mb-1">Elephant Re-ID</h3>
+            <p class="font-pixel text-[10px] text-gray-500 mb-4">WILDLIFE CONSERVATION SYSTEM</p>
+            <ul class="space-y-2 text-sm font-medium">
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> ConvNeXt-Tiny with 384-dim embeddings</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Deep metric learning for 259+ identities</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> <span class="font-pixel text-xs bg-sun px-1">92.16%</span> Rank-1 Accuracy</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- InsightFlow -->
+        <div class="reveal card overflow-hidden rounded-none">
+          <div class="h-44 bg-hot flex items-center justify-center relative brutal-border border-l-0 border-r-0 border-t-0">
+            <span class="iconify text-7xl text-white opacity-20" data-icon="lucide:bar-chart-3"></span>
+          </div>
+          <div class="p-6">
+            <span class="badge bg-hot text-white mb-3">★ RARE</span>
+            <h3 class="font-pixel text-xl text-void mb-1">InsightFlow</h3>
+            <p class="font-pixel text-[10px] text-gray-500 mb-4">AI BUSINESS INTELLIGENCE</p>
+            <ul class="space-y-2 text-sm font-medium">
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> Multi-agent research automation</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> RAG pipelines & market analysis</li>
+              <li class="flex items-start gap-2"><span class="text-void font-bold">▸</span> AI-powered reporting via Streamlit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== JOURNEY ========== -->
+  <section id="journey" class="py-20 px-4 sm:px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-pixel text-2xl sm:text-3xl text-void inline-block bg-mint px-6 py-2 brutal-border brutal-shadow-sm">JOURNEY</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Education -->
+        <div class="reveal card p-6 sm:p-8 rounded-none">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-sun brutal-border flex items-center justify-center"><span class="iconify" data-icon="lucide:graduation-cap" data-width="20"></span></div>
+            <h3 class="font-pixel text-sm">EDUCATION</h3>
+          </div>
+          <div class="bg-cream brutal-border p-5 rounded-none mb-6">
+            <p class="font-extrabold text-lg text-void mb-1">IILM University</p>
+            <p class="font-mono text-xs text-gray-500 mb-3">Greater Noida · 2023 - 2027</p>
+            <p class="font-pixel text-xs text-void mb-3">B.Tech CSE — AI & Machine Learning</p>
+            <span class="badge bg-sun text-void font-bold">CGPA 9.2/10</span>
+          </div>
+
+          <p class="font-pixel text-[10px] text-gray-500 mb-3">// certifications:</p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 p-3 brutal-border bg-cream rounded-none">
+              <span class="iconify" data-icon="lucide:cloud" data-width="16" style="color:#FF6B9D;"></span>
+              <div><p class="text-xs font-extrabold">Agentic AI on AWS</p><p class="text-[10px] text-gray-500 font-mono">AWS Training · Dec 2025</p></div>
+            </div>
+            <div class="flex items-center gap-3 p-3 brutal-border bg-cream rounded-none">
+              <span class="iconify" data-icon="lucide:cpu" data-width="16" style="color:#00D4FF;"></span>
+              <div><p class="text-xs font-extrabold">IBM AI Fundamentals</p><p class="text-[10px] text-gray-500 font-mono">IBM · Jul 2025</p></div>
+            </div>
+            <div class="flex items-center gap-3 p-3 brutal-border bg-cream rounded-none">
+              <span class="iconify" data-icon="lucide:code-2" data-width="16" style="color:#34D399;"></span>
+              <div><p class="text-xs font-extrabold">Intro to Machine Learning</p><p class="text-[10px] text-gray-500 font-mono">Kaggle · Sep 2025</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="reveal card p-6 sm:p-8 rounded-none">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 brutal-border flex items-center justify-center" style="background:#00D4FF;"><span class="iconify" data-icon="lucide:swords" data-width="20"></span></div>
+            <h3 class="font-pixel text-sm">EXPERIENCE</h3>
+          </div>
+
+          <div class="bg-cream brutal-border p-5 rounded-none mb-4">
+            <p class="font-extrabold text-lg text-void mb-1">Wildlife Institute of India</p>
+            <p class="font-pixel text-[10px] mb-3" style="color:#0097b2;">RESEARCH INTERN · MAR 2026 – APR 2026</p>
+            <ul class="space-y-2 text-sm font-medium">
+              <li class="flex items-start gap-2"><span class="font-bold">▸</span> Open-set elephant re-ID using ConvNeXt-Tiny</li>
+              <li class="flex items-start gap-2"><span class="font-bold">▸</span> 384-D embeddings for 259+ identities</li>
+              <li class="flex items-start gap-2"><span class="font-bold">▸</span> <span class="font-pixel text-xs bg-sun px-1">92.16%</span> Rank-1 & <span class="font-pixel text-xs bg-mint px-1">100%</span> Rank-5 accuracy</li>
+            </ul>
+          </div>
+
+          <div class="bg-cream brutal-border p-5 rounded-none">
+            <p class="font-extrabold text-lg text-void mb-1">IBM SkillBuild</p>
+            <p class="font-pixel text-[10px] text-hot mb-3">AI INTERNSHIP PROGRAM</p>
+            <ul class="space-y-2 text-sm font-medium">
+              <li class="flex items-start gap-2"><span class="font-bold">▸</span> Machine learning fundamentals</li>
+              <li class="flex items-start gap-2"><span class="font-bold">▸</span> AI applications in industry contexts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GUESTBOOK (GIRISH.EXE) - COLOR CORRECTED ========== -->
+  <section id="guestbook" class="py-20 px-4 sm:px-6 bg-cream">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal text-center mb-12">
+        <h2 class="font-pixel text-2xl sm:text-3xl text-void inline-block bg-sun px-6 py-2 brutal-border brutal-shadow-sm">GIRISH.EXE</h2>
+        <p class="font-mono text-xs text-gray-500 mt-4">establish_connection // send_packet</p>
+      </div>
+
+      <div class="reveal bg-white brutal-border p-8 sm:p-12 rounded-none" style="box-shadow: 8px 8px 0 #FFD600; border-color: #000;">
+        <form id="guestbookForm" class="mb-8">
+          <textarea id="msgArea" rows="4" placeholder="Type your message here..." class="w-full p-4 font-mono text-sm text-void brutal-border rounded-none focus:outline-none focus:border-sun resize-none placeholder-gray-500 bg-cream" style="border-color:#000;"></textarea>
+          <div class="flex justify-between items-center mt-3">
+            <span class="font-mono text-[10px] text-gray-600">Stored securely · <span id="charCount" class="text-void font-bold">0</span>/2000</span>
+            <button type="submit" class="brutal-btn bg-red-500 text-white px-8 py-2.5 text-xs rounded-none font-sans font-extrabold tracking-wide">SEND</button>
+          </div>
+          <div id="formMsg" class="mt-4 hidden font-mono text-sm text-mint text-center"></div>
+        </form>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a href="https://github.com/G1r1shCodes" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 brutal-border rounded-none transition-all hover:-translate-y-1" style="background:#FFF8E7; border-color:#000; box-shadow:3px 3px 0 #FFD600;">
+            <span class="iconify text-void" data-icon="lucide:github" data-width="22"></span>
+            <div><p class="font-pixel text-[10px] font-bold text-void">GITHUB</p><p class="font-mono text-[9px] text-gray-600">G1r1shCodes</p></div>
+          </a>
+          <a href="https://linkedin.com/in/girishkumarcs" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 brutal-border rounded-none transition-all hover:-translate-y-1" style="background:#FFF8E7; border-color:#000; box-shadow:3px 3px 0 #00D4FF;">
+            <span class="iconify" data-icon="lucide:linkedin" data-width="22" style="color:#0097b2;"></span>
+            <div><p class="font-pixel text-[10px] font-bold" style="color:#0097b2;">LINKEDIN</p><p class="font-mono text-[9px] text-gray-600">girishkumarcs</p></div>
+          </a>
+          <a href="mailto:girishyadav.cs@gmail.com" class="flex items-center gap-3 p-4 brutal-border rounded-none transition-all hover:-translate-y-1" style="background:#FFF8E7; border-color:#000; box-shadow:3px 3px 0 #FF6B9D;">
+            <span class="iconify" data-icon="lucide:mail" data-width="22" style="color:#FF6B9D;"></span>
+            <div><p class="font-pixel text-[10px] font-bold" style="color:#FF6B9D;">EMAIL</p><p class="font-mono text-[9px] text-gray-600">girishyadav.cs</p></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (KEPT BLACK) ========== -->
+  <footer id="contact" class="py-8 px-4 bg-void border-t-4 border-sun">
+    <div class="max-w-5xl mx-auto text-center">
+      <p class="font-mono text-[10px] text-gray-500">© 2026 Girish Kumar Yadav · Built with React, FastAPI & pixel love</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== SCROLL REVEAL =====
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // ===== NAV ACTIVE STATE =====
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-item');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
+      navItems.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+        if (l.getAttribute('href') === '#' + current) { l.classList.add('text-void'); l.classList.remove('text-white'); }
+        else { l.classList.remove('text-void'); l.classList.add('text-white'); }
+      });
+    });
+
+    // ===== MOBILE MENU =====
+    const mm = document.getElementById('mobileMenu');
+    document.getElementById('menuBtn').addEventListener('click', () => mm.classList.add('open'));
+    document.getElementById('closeMenu').addEventListener('click', () => mm.classList.remove('open'));
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => mm.classList.remove('open')));
+
+    // ===== CHARACTER COUNTER =====
+    const msgArea = document.getElementById('msgArea');
+    const charCount = document.getElementById('charCount');
+    msgArea.addEventListener('input', function() {
+      charCount.textContent = this.value.length;
+      if (this.value.length > 2000) { this.value = this.value.substring(0, 2000); charCount.textContent = 2000; }
+    });
+
+    // ===== GUESTBOOK FORM =====
+    document.getElementById('guestbookForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const m = document.getElementById('formMsg');
+      m.textContent = '✓ Packet sent! Connection established.';
+      m.classList.remove('hidden');
+      this.reset(); charCount.textContent = '0';
+      setTimeout(() => m.classList.add('hidden'), 5000);
+    });
+
+    // ===== CLICK PARTICLES =====
+    document.addEventListener('click', (e) => {
+      const colors = ['#FFD600', '#00D4FF', '#FF6B9D', '#34D399', '#000000'];
+      for (let i = 0; i < 6; i++) {
+        const p = document.createElement('div');
+        p.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:8px;height:8px;border:2px solid #000;background:${colors[Math.floor(Math.random()*colors.length)]};pointer-events:none;z-index:9999;`;
+        document.body.appendChild(p);
+        const a = (Math.PI*2/6)*i+Math.random()*0.5, sp=40+Math.random()*50;
+        p.animate([
+          {transform:'translate(0,0) rotate(0deg)',opacity:1},
+          {transform:`translate(${Math.cos(a)*sp}px,${Math.sin(a)*sp}px) rotate(180deg)`,opacity:0}
+        ],{duration:500,easing:'cubic-bezier(0,0,0.2,1)'}).onfinish=()=>p.remove();
+      }
+    });
+  </script>
+</body>
+</html>
