@@ -17,6 +17,28 @@ const silkscreen = Silkscreen({
 export const metadata: Metadata = {
   title: "Girish's Portfolio",
   description: "Explore my world. Discover my work. Meet the builder behind it.",
+  openGraph: {
+    title: "Girish's Portfolio",
+    description: "Explore my world. Discover my work. Meet the builder behind it.",
+    url: 'https://portfolio-girish.vercel.app',
+    siteName: "Girish's Portfolio",
+    images: [
+      {
+        url: '/codedex/Landing_Text.png',
+        width: 1200,
+        height: 630,
+        alt: "Girish's Portfolio",
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Girish's Portfolio",
+    description: "Explore my world. Discover my work. Meet the builder behind it.",
+    images: ['/codedex/Landing_Text.png'],
+  },
 };
 
 export default function RootLayout({
