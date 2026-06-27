@@ -27,7 +27,6 @@ export default function Navbar() {
     { href: '#skills', label: 'SKILLS' },
     { href: '#quests', label: 'QUESTS' },
     { href: '#journey', label: 'JOURNEY' },
-    { href: '#guestbook', label: 'GUESTBOOK' },
     { href: '#contact', label: 'CONTACT' },
   ];
 

@@ -1,108 +1,136 @@
 export default function Skills() {
+  const courses = [
+    {
+      title: "Core Programming",
+      subtitle: "LANGUAGES",
+      desc: "Strong foundation in computer science fundamentals, OOP, data structures, and problem-solving using Python and C++.",
+      tag: "PROFICIENT",
+      tagColor: "bg-[#22C55E]",
+      image: "/codedex/python-animated.gif",
+      href: "#projects"
+    },
+    {
+      title: "Data Science & Analysis",
+      subtitle: "ML & DATA",
+      desc: "Experience building models, analyzing datasets, and uncovering patterns with NumPy, Pandas, Scikit-learn, and Matplotlib.",
+      tag: "INTERMEDIATE",
+      tagColor: "bg-[#FACC15]",
+      image: "/codedex/css-course-banner.gif",
+      href: "#projects"
+    },
+    {
+      title: "Computer Vision",
+      subtitle: "DEEP LEARNING",
+      desc: "Training deep neural networks using PyTorch & TensorFlow. Specialized in object recognition models like YOLO and ConvNeXt.",
+      tag: "ADVANCED",
+      tagColor: "bg-[#EF4444]",
+      image: "/codedex/html-parralax-combined.gif",
+      href: "#projects"
+    },
+    {
+      title: "Generative AI Apps",
+      subtitle: "AI & LLMs",
+      desc: "Building next-gen intelligent applications using RAG pipelines, LangChain, Vector Databases, and OpenAI APIs.",
+      tag: "ADVANCED",
+      tagColor: "bg-[#EF4444]",
+      image: "/codedex/github-copilots.gif",
+      href: "#projects"
+    },
+    {
+      title: "Scalable Backends",
+      subtitle: "APIs & SERVERS",
+      desc: "Designing and building fast, reliable REST APIs using FastAPI, Node.js, and robust relational databases.",
+      tag: "INTERMEDIATE",
+      tagColor: "bg-[#FACC15]",
+      image: "/codedex/javascript-course-banner.gif",
+      href: "#projects"
+    },
+    {
+      title: "My Journey",
+      subtitle: "EXPERIENCE",
+      desc: "Explore my professional journey, hackathon wins, continuous learning, and future goals across the coding universe.",
+      tag: "EXPLORE",
+      tagColor: "bg-[#00D4FF]",
+      image: "/codedex/worldmap.png",
+      href: "#about",
+      specialLayout: true
+    }
+  ];
+
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <div className="reveal text-center mb-12">
-          <h2 className="font-pixel text-2xl sm:text-3xl text-void inline-block bg-ice px-6 py-2 brutal-border brutal-shadow-sm" style={{ color: '#000' }}>SKILL TREE</h2>
+    <section id="skills" className="py-20 px-4 sm:px-6 bg-[#020617]" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Header matching Codedex style */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Explore My Projects & Skillset
+          </h2>
+          <p className="text-lg text-gray-400 font-medium max-w-2xl mx-auto">
+            A collection of my technical skills, personal projects, and continuous journey in software development.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Languages */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #00D4FF' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:swords" data-width="18"></span> LANGUAGES</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>Python</span>
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>C</span>
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>C++</span>
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>Java</span>
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>JavaScript</span>
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>HTML</span>
-              <span className="badge text-void" style={{ background: '#00D4FF' }}>CSS</span>
-            </div>
-          </div>
+        {/* Tags filter placeholder */}
+        <div className="flex flex-wrap gap-4 mb-10 justify-center">
+          <button className="bg-[#1E293B] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-[#334155] transition-colors border border-gray-700">All Projects</button>
+          <button className="bg-[#1E293B] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-[#334155] transition-colors border border-gray-700">Frontend</button>
+          <button className="bg-[#1E293B] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-[#334155] transition-colors border border-gray-700">Backend</button>
+          <button className="bg-[#1E293B] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-[#334155] transition-colors border border-gray-700">AI & Machine Learning</button>
+        </div>
 
-          {/* ML & Data Science */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #FF6B9D' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:brain" data-width="18"></span> ML & DATA</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-white" style={{ background: '#FF6B9D' }}>NumPy</span>
-              <span className="badge text-white" style={{ background: '#FF6B9D' }}>Pandas</span>
-              <span className="badge text-white" style={{ background: '#FF6B9D' }}>Scikit-learn</span>
-              <span className="badge text-white" style={{ background: '#FF6B9D' }}>Matplotlib</span>
-              <span className="badge text-white" style={{ background: '#FF6B9D' }}>EDA</span>
-              <span className="badge text-white" style={{ background: '#FF6B9D' }}>Feature Eng.</span>
+        {/* Courses Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+          {courses.map((course, idx) => (
+            <div key={idx} className="group cursor-pointer">
+              <a href={course.href} className="block relative h-full">
+                {/* 3D Bottom Card (Shadow) - Made lighter so it shows on dark bg */}
+                <div className={`absolute inset-0 rounded-2xl transform translate-y-2 translate-x-1 group-hover:translate-y-4 group-hover:translate-x-2 transition-transform duration-300 ${course.specialLayout ? 'bg-[#FACC15]' : 'bg-[#334155]'}`}></div>
+                
+                {/* 3D Top Card */}
+                <div className={`relative h-full border-[3px] border-[#0F172A] rounded-2xl flex flex-col overflow-hidden transform group-hover:-translate-y-2 group-hover:-translate-x-1 transition-transform duration-300 ${course.specialLayout ? 'bg-[#0F172A] text-white' : 'bg-[#0F172A] text-white'}`}>
+                  
+                  {course.specialLayout ? (
+                    <div className="p-8 flex-1 flex flex-col items-center justify-center text-center">
+                       <img src={course.image} alt="World Map" className="w-32 h-32 object-contain mb-6 drop-shadow-xl" style={{ imageRendering: 'pixelated' }} />
+                       <h3 className="text-3xl font-extrabold text-[#FACC15] mb-4 tracking-tight">{course.title}</h3>
+                       <p className="text-gray-300 font-medium leading-relaxed mb-8">{course.desc}</p>
+                       <div className={`inline-flex items-center px-4 py-1.5 rounded-full border-2 border-white ${course.tagColor}`}>
+                         <span className="text-[10px] font-black text-[#0F172A] tracking-wider uppercase">{course.tag}</span>
+                       </div>
+                    </div>
+                  ) : (
+                    <>
+                      {/* Image Container */}
+                      <div className="h-[200px] w-full border-b-[3px] border-[#0F172A] bg-gray-100 overflow-hidden relative">
+                        <img 
+                          src={course.image} 
+                          alt={course.title} 
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                      
+                      {/* Content Container */}
+                      <div className="p-6 flex-1 flex flex-col">
+                        <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-1">{course.subtitle}</p>
+                        <h3 className="text-2xl font-extrabold text-white mb-3">{course.title}</h3>
+                        <p className="text-gray-300 font-medium leading-relaxed flex-1">
+                          {course.desc}
+                        </p>
+                        
+                        {/* Stats/Tag Container */}
+                        <div className="mt-6 flex items-center">
+                          <div className={`inline-flex items-center px-3 py-1 rounded-full border-2 border-transparent ${course.tagColor}`}>
+                            <span className="text-[10px] font-black text-[#0F172A] tracking-wider uppercase">{course.tag}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </a>
             </div>
-          </div>
-
-          {/* Deep Learning & CV */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #FFD600' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:eye" data-width="18"></span> DL & CV</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-void" style={{ background: '#FFD600' }}>PyTorch</span>
-              <span className="badge text-void" style={{ background: '#FFD600' }}>TensorFlow</span>
-              <span className="badge text-void" style={{ background: '#FFD600' }}>YOLOv7</span>
-              <span className="badge text-void" style={{ background: '#FFD600' }}>YOLOv8</span>
-              <span className="badge text-void" style={{ background: '#FFD600' }}>ConvNeXt</span>
-              <span className="badge text-void" style={{ background: '#FFD600' }}>Computer Vision</span>
-            </div>
-          </div>
-
-          {/* AI & LLMs */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #34D399' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:sparkles" data-width="18"></span> AI & LLMS</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-void" style={{ background: '#34D399' }}>RAG</span>
-              <span className="badge text-void" style={{ background: '#34D399' }}>LangChain</span>
-              <span className="badge text-void" style={{ background: '#34D399' }}>LlamaIndex</span>
-              <span className="badge text-void" style={{ background: '#34D399' }}>Vector DB</span>
-              <span className="badge text-void" style={{ background: '#34D399' }}>AI Agents</span>
-              <span className="badge text-void" style={{ background: '#34D399' }}>Prompt Eng.</span>
-            </div>
-          </div>
-
-          {/* Backend & APIs */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #FF9900' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:server" data-width="18"></span> BACKEND</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-void" style={{ background: '#FF9900' }}>FastAPI</span>
-              <span className="badge text-void" style={{ background: '#FF9900' }}>REST APIs</span>
-              <span className="badge text-void" style={{ background: '#FF9900' }}>Pydantic</span>
-            </div>
-          </div>
-
-          {/* Databases */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #A855F7' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:database" data-width="18"></span> DATABASES</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-white" style={{ background: '#A855F7' }}>MySQL</span>
-            </div>
-          </div>
-
-          {/* Tools & Platforms */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #FF3333' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:wrench" data-width="18"></span> TOOLS</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-white" style={{ background: '#FF3333' }}>Git</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>GitHub</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>VS Code</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>Streamlit</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>Figma</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>Linux</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>Docker</span>
-              <span className="badge text-white" style={{ background: '#FF3333' }}>AWS</span>
-            </div>
-          </div>
-
-          {/* Core CS */}
-          <div className="reveal card p-6 rounded-none" style={{ borderLeft: '8px solid #22C55E' }}>
-            <h3 className="font-pixel text-sm text-void mb-4 flex items-center gap-2"><span className="iconify" data-icon="lucide:cpu" data-width="18"></span> CORE CS</h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="badge text-void" style={{ background: '#22C55E' }}>DSA</span>
-              <span className="badge text-void" style={{ background: '#22C55E' }}>OOP</span>
-              <span className="badge text-void" style={{ background: '#22C55E' }}>Problem Solving</span>
-            </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </section>

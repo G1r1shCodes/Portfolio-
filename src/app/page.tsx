@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Features from "@/components/Features";
+import Club from "@/components/Club";
 import QuestLog from "@/components/QuestLog";
 import Journey from "@/components/Journey";
 import Guestbook from "@/components/Guestbook";
@@ -14,8 +16,10 @@ export default function Home() {
       <Effects />
       <Navbar />
       <Hero />
-      <About />
       <Skills />
+      <Features />
+      <Club />
+      <About />
       <QuestLog />
       <Journey />
       <Guestbook />

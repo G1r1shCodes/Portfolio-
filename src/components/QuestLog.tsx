@@ -23,8 +23,8 @@ export default function QuestLog() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* LexScan */}
           <div className="reveal card overflow-hidden rounded-none">
-            <div className="h-44 bg-sun relative brutal-border border-l-0 border-r-0 border-t-0">
-              <img src="/images/lexscan.png" alt="LexScan" className="w-full h-full object-cover" />
+            <div className="h-48 bg-sun relative brutal-border border-l-0 border-r-0 border-t-0 p-4 flex items-center justify-center">
+              <img src="/images/lexscan.png" alt="LexScan" className="w-full h-full object-contain" />
             </div>
             <div className="p-6">
               <div className="flex justify-between items-start mb-3">
@@ -50,8 +50,8 @@ export default function QuestLog() {
 
           {/* PathShala AI */}
           <div className="reveal card overflow-hidden rounded-none">
-            <div className="h-44 bg-mint relative brutal-border border-l-0 border-r-0 border-t-0">
-              <img src="/images/pathshala.png" alt="PathShala AI" className="w-full h-full object-cover" />
+            <div className="h-48 bg-mint relative brutal-border border-l-0 border-r-0 border-t-0 p-4 flex items-center justify-center">
+              <img src="/images/pathshala.png" alt="PathShala AI" className="w-full h-full object-contain" />
             </div>
             <div className="p-6">
               <div className="flex justify-between items-start mb-3">
@@ -77,8 +77,8 @@ export default function QuestLog() {
 
           {/* Elephant Re-ID */}
           <div className="reveal card overflow-hidden rounded-none">
-            <div className="h-44 bg-ice relative brutal-border border-l-0 border-r-0 border-t-0" style={{ background: '#00D4FF' }}>
-              <img src="/images/elephant.png" alt="Elephant Re-ID" className="w-full h-full object-cover" />
+            <div className="h-48 bg-ice relative brutal-border border-l-0 border-r-0 border-t-0 p-4 flex items-center justify-center" style={{ background: '#00D4FF' }}>
+              <img src="/images/elephant.png" alt="Elephant Re-ID" className="w-full h-full object-contain" />
             </div>
             <div className="p-6">
               <div className="flex justify-between items-start mb-3">
@@ -101,8 +101,8 @@ export default function QuestLog() {
 
           {/* InsightFlow */}
           <div className="reveal card overflow-hidden rounded-none">
-            <div className="h-44 bg-hot relative brutal-border border-l-0 border-r-0 border-t-0">
-              <img src="/images/insightflow.png" alt="InsightFlow" className="w-full h-full object-cover" />
+            <div className="h-48 bg-hot relative brutal-border border-l-0 border-r-0 border-t-0 p-4 flex items-center justify-center">
+              <img src="/images/insightflow.png" alt="InsightFlow" className="w-full h-full object-contain" />
             </div>
             <div className="p-6">
               <div className="flex justify-between items-start mb-3">
